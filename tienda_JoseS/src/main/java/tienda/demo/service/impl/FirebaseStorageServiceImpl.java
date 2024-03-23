@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package tienda.demo.service.impl;
-
 import com.google.auth.Credentials;
 import com.google.auth.ServiceAccountSigner;
 import com.google.auth.oauth2.GoogleCredentials;
@@ -21,14 +20,14 @@ import java.util.concurrent.TimeUnit;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
 /**
  *
- * @author JoseSapi
-*/
+ * @author alejh
+ */
 @Service
-public class FirebaseStorageServiceImpl implements FirebaseStorageService {
-
-@Override
+public class FirebaseStorageServiceImpl implements FirebaseStorageService{
+    @Override
     public String cargaImagen(MultipartFile archivoLocalCliente, String carpeta, Long id) {
         try {
             // El nombre original del archivo local del cliente
@@ -53,10 +52,11 @@ public class FirebaseStorageServiceImpl implements FirebaseStorageService {
             String fileName) throws IOException {
         // Se define el lugar y acceso al archivo .jasper
         ClassPathResource json = new ClassPathResource(rutaJsonFile + File.separator + archivoJsonFile);
-        BlobId blobId = BlobId.of(BucketName, rutaSuperiorStorage + "/" + carpeta + "/" + fileName);
+        BlobId blobId = BlobId.of(BucketName, 
+                rutaSuperiorStorage + "/" + carpeta + "/" + fileName);
         BlobInfo blobInfo = BlobInfo.newBuilder(blobId)
-                                .setContentType("media")
-                                .build();
+                                .setContentType("media").build();
+        
         Credentials credentials = GoogleCredentials.fromStream(json.getInputStream());
         Storage storage = StorageOptions.newBuilder()
                                     .setCredentials(credentials)
@@ -67,7 +67,10 @@ public class FirebaseStorageServiceImpl implements FirebaseStorageService {
         return url;
     }  
 
-       private File convertToFile(MultipartFile archivoLocalCliente) throws IOException {
+    
+    //Metodo utilitario que convierte el archivo desde el equipo local 
+    // del usuario a un archivo temporal en el servidor 
+    private File convertToFile(MultipartFile archivoLocalCliente) throws IOException {
         File tempFile = File.createTempFile("img", null);
 
         try (FileOutputStream fos = new FileOutputStream(tempFile)) {

@@ -8,10 +8,10 @@
         <version>3.1.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.tiendaJoseS</groupId>
-    <artifactId>tiendaJoseS</artifactId>
+    <groupId>com.tiendaAle</groupId>
+    <artifactId>TiendaAle</artifactId>
     <version>1</version>
-    <name>tiendaJoseS</name>
+    <name>TiendaAleMain</name>
     <description>Proyecto tienda de martes noche 2023 IIIC</description>
     <properties>
         <java.version>17</java.version>
@@ -80,9 +80,20 @@
             <artifactId>firebase-admin</artifactId>
             <version>9.1.1</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity6</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.1.Final</version>
+        </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -99,5 +110,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

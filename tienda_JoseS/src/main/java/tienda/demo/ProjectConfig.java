@@ -25,10 +25,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
-/**
- *
- * @author alejh
- */
 @Configuration
 public class ProjectConfig implements WebMvcConfigurer {
 
@@ -73,7 +69,7 @@ public class ProjectConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {  //Agregar listado hacer el rooteo.
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((request) -> request
                 .requestMatchers("/", "/index", "/errores/**", "/carrito/**", "/pruebas/**", "/reportes/**",
@@ -86,9 +82,10 @@ public class ProjectConfig implements WebMvcConfigurer {
                         "/reportes/**")
                 .hasRole("ADMIN")
                 .requestMatchers("/producto/listado", "/categoria/listado", "/usuario/listado")
-                .hasAnyRole("ADMIN", "VENDEDOR")
+                .hasAnyRole("ADMIN", "VENDEDOR", "USER") // Permitir acceso al listado de productos para los usuarios
                 .requestMatchers("/facturar/carrito")
                 .hasRole("USER")
+                .requestMatchers("/producto/listado") // Permitir acceso al listado de productos para los usuarios
                 )
                 .formLogin((form) -> form
                 .loginPage("/login").permitAll()
@@ -121,11 +118,9 @@ public class ProjectConfig implements WebMvcConfigurer {
 //                .build();
 //        return new InMemoryUserDetailsManager(user, sales, admin);
 //    }
-    
-    
     @Autowired
     private UserDetailsService userDetailsService;
-    
+
     @Autowired
     public void configurerGlobal(AuthenticationManagerBuilder build) throws Exception {
         build.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());

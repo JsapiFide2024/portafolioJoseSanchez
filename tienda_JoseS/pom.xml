@@ -8,10 +8,10 @@
         <version>3.1.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.tiendaAle</groupId>
-    <artifactId>TiendaAle</artifactId>
+    <groupId>com.tiendaJose</groupId>
+    <artifactId>TiendaJose</artifactId>
     <version>1</version>
-    <name>TiendaAleMain</name>
+    <name>TiendaJose</name>
     <description>Proyecto tienda de martes noche 2023 IIIC</description>
     <properties>
         <java.version>17</java.version>

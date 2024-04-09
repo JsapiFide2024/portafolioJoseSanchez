@@ -2,9 +2,6 @@ package tienda.demo.controller;
 
 
 import tienda.demo.domain.Producto;
-import tienda.demo.service.CategoriaService;
-import tienda.demo.service.ProductoService;
-import tienda.demo.service.impl.FirebaseStorageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import tienda.demo.service.FirebaseStorageService;
+import tienda.demo.service.ProductoService;
+import tienda.demo.service.categoriaService;
 
 @Controller
 @RequestMapping("/producto")
@@ -21,7 +21,7 @@ public class ProductoController {
     @Autowired
     private ProductoService productoService;
     @Autowired
-    private CategoriaService categoriaService;
+    private categoriaService categoriaService;
     
     @GetMapping("/listado")
     private String listado(Model model) {
@@ -41,7 +41,7 @@ public class ProductoController {
     }
 
     @Autowired
-    private FirebaseStorageServiceImpl firebaseStorageService;
+    private FirebaseStorageService firebaseStorageService;
     
     @PostMapping("/guardar")
     public String productoGuardar(Producto producto,

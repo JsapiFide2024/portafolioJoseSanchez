@@ -1,5 +1,5 @@
-package tienda.demo.domain;
 
+package tienda.demo.domain;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import lombok.Data;
@@ -7,7 +7,8 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="producto")
-public class Producto implements Serializable {
+
+public class Producto implements Serializable{
     private static final long serialVersionUID = 1L;
     
     @Id
@@ -34,5 +35,4 @@ public class Producto implements Serializable {
         this.descripcion = descripcion;
         this.activo = activo;
     }
-    
 }

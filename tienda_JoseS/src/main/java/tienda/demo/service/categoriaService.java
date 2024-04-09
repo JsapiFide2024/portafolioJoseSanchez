@@ -1,13 +1,17 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package tienda.demo.service;
 
 import tienda.demo.domain.Categoria;
 import java.util.List;
 
-public interface CategoriaService {
+public interface categoriaService {
+    // Se obtiene un listado de categorias en un List
+    public List<Categoria> getCategorias(boolean activos);
 
-    public List<Categoria> getCategorias(boolean activo);
-
-    // Se obtiene un Categoria, a partir del id de un categoria
+   // Se obtiene un Categoria, a partir del id de un categoria
     public Categoria getCategoria(Categoria categoria);
     
     // Se inserta un nuevo categoria si el id del categoria esta vacío

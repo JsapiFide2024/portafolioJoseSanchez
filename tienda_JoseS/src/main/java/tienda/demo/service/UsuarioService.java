@@ -1,16 +1,16 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package tienda.demo.service;
-import tienda.demo.domain.Usuario;
+
 import java.util.List;
+import tienda.demo.domain.Usuario;
+
 /**
  *
- * @author alejh
+ * @author hhern
  */
-
-
 public interface UsuarioService {
     
     // Se obtiene un listado de usuarios en un List
@@ -37,5 +37,4 @@ public interface UsuarioService {
     
     // Se elimina el usuario que tiene el id pasado por parámetro
     public void delete(Usuario usuario);
-    
 }

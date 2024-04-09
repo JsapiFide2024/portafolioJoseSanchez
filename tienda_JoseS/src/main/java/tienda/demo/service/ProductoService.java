@@ -4,25 +4,25 @@ import tienda.demo.domain.Producto;
 import java.util.List;
 
 public interface ProductoService {
-    // Obtiene una lista de productos según su estado de activo
+
     public List<Producto> getProductos(boolean activo);
-    
-    // Obtiene un producto a partir de su objeto Producto
+
+    // Se obtiene un Producto, a partir del id de un producto
     public Producto getProducto(Producto producto);
     
-    // Inserta un nuevo producto si el ID del producto está vacío,
-    // de lo contrario, actualiza el producto
+    // Se inserta un nuevo producto si el id del producto esta vacío
+    // Se actualiza un producto si el id del producto NO esta vacío
     public void save(Producto producto);
     
-    // Elimina el producto con el ID proporcionado
+    // Se elimina el producto que tiene el id pasado por parámetro
     public void delete(Producto producto);
     
-    // Lista de productos con precio entre ordenados por descripción
+    // Lista de productos con precio entre ordendados por descripción ConsultaAmpliada
     public List<Producto> findByPrecioBetweenOrderByDescripcion(double precioInf, double precioSup);
-    
-    // Lista de productos utilizando consultas con JPQL
+
+    //Lista de productos utilizando consultas con JPQL    
     public List<Producto> metodoJPQL(double precioInf, double precioSup);
-    
-    // Lista de productos utilizando consultas con SQL Nativo
+
+    //Lista de productos utilizando consultas con SQL Nativo
     public List<Producto> metodoNativo(double precioInf, double precioSup);
 }

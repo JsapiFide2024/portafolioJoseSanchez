@@ -4,21 +4,19 @@
  */
 package tienda.demo.service.impl;
 
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tienda.demo.dao.RolDao;
 import tienda.demo.dao.UsuarioDao;
 import tienda.demo.domain.Rol;
 import tienda.demo.domain.Usuario;
 import tienda.demo.service.UsuarioService;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-/**
- *
- * @author alejh
- */
+
 @Service
-public class UsuarioServiceImpl implements UsuarioService {
+public class UsuarioServiceImpl implements UsuarioService{
+
     @Autowired
     private UsuarioDao usuarioDao;
     @Autowired
@@ -77,4 +75,5 @@ public class UsuarioServiceImpl implements UsuarioService {
     public void delete(Usuario usuario) {
         usuarioDao.delete(usuario);
     }
+    
 }

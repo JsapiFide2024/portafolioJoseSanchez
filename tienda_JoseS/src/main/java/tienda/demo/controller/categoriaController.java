@@ -1,9 +1,11 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package tienda.demo.controller;
 
-
-import tienda.demo.domain.Categoria;
-import tienda.demo.service.CategoriaService;
-import tienda.demo.service.impl.FirebaseStorageServiceImpl;
+import tienda.demo.service.categoriaService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,23 +14,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
+import tienda.demo.domain.Categoria;
+import tienda.demo.service.impl.FirebaseStorageServiceImpl;
 @Controller
+@Slf4j
 @RequestMapping("/categoria")
-public class CategoriaController {
-  
+public class categoriaController {
     @Autowired
-    private CategoriaService categoriaService;
-    
+    private categoriaService categoriaService;
+
     @GetMapping("/listado")
-    private String listado(Model model) {
+    public String inicio(Model model) {
         var categorias = categoriaService.getCategorias(false);
         model.addAttribute("categorias", categorias);
-        model.addAttribute("totalCategorias",categorias.size());
+        model.addAttribute("totalCategorias", categorias.size());
         return "/categoria/listado";
     }
     
-     @GetMapping("/nuevo")
+    @GetMapping("/nuevo")
     public String categoriaNuevo(Categoria categoria) {
         return "/categoria/modifica";
     }
@@ -62,5 +65,5 @@ public class CategoriaController {
         categoria = categoriaService.getCategoria(categoria);
         model.addAttribute("categoria", categoria);
         return "/categoria/modifica";
-    }   
+    }
 }
